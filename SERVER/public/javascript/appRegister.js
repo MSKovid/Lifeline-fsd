@@ -4,7 +4,13 @@ function verifyRegistration(){
     var curr_date=new Date().getTime();
     var dob_input = dob.getTime();
     var mobile  = new RegExp(/^\d{10}$/);
-    if(!mobile.test(mobileNo)) {
+    var email = document.getElementById('mailID').value;
+    var mail = new RegExp(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/);
+    if(!mail.test(email)){
+        alert("Invalid email address!!");
+        return false;
+    }
+    else if(!mobile.test(mobileNo)) {
         alert("Invalid Mobile number!!");
         return false;
     }else if(curr_date < dob_input){
@@ -20,7 +26,6 @@ regform.addEventListener("submit",function(e){
     if(verifyRegistration()==false){
         e.preventDefault();
     }
-
     else{
         console.log("Registered successfully")
     }
