@@ -2,9 +2,15 @@ function verifyDocRegistration(){
     var mobileNum = document.getElementById("mobNum").value;  
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
+    var email = document.getElementById('emailID').value;
     var regularExpression  = new RegExp(/^[A-Za-z]\w{8,15}$/);
+    var mail = new RegExp(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/);
     var mobile  = new RegExp(/^\d{10}$/);
-    if(!mobile.test(mobileNum))
+    if(!mail.test(email)){
+        alert("Invalid email address!!");
+        return false;
+    }
+    else if(!mobile.test(mobileNum))
      {
         alert("Invalid Mobile number!!");
         return false;
